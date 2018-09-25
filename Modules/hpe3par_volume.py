@@ -110,7 +110,7 @@ options:
       - MiB
       - GiB
       - TiB
-    default: MiB
+    default: GiB
     description:
       - "Specifies the unit of the volume size.\nRequired with action present,
        grow, grow_to_size\n"
