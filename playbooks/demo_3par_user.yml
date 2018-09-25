@@ -47,8 +47,8 @@
         storage_system_ip: "{{ storage_system_ip }}"
         storage_system_username: "{{ storage_system_username }}"
         storage_system_password: "{{ storage_system_password }}"
-        state: present
-        volume_name: "{{ volume_name }}"
+        state: export_volumeset_to_host
+        volume_set_name: "{{ volumeset_name }}"
         host_name: "{{ host_name }}"
         lunid: "{{ lunid }}"
         autolun: "{{ autolun }}"
