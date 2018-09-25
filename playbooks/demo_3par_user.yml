@@ -16,7 +16,7 @@
 
   tasks:
     - name: Load Storage System Vars
-      include_vars: 'properties/storage_system_properties.yml'
+      include_vars: 'properties/storage_system_properties_bob.yml'
 
     - name: Load VolumeSet Vars
       include_vars: 'properties/volumeset_properties.yml'
