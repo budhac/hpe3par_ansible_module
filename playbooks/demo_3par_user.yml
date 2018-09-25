@@ -27,10 +27,9 @@
         storage_system_username: "{{ storage_system_username }}"
         storage_system_password: "{{ storage_system_password }}"
         state: present
-        volume_name: "{{ item }}"
+        volume_name: "{{ volume_name }}"
         cpg: "{{ cpg_name }}"
         size: "{{ vol_size }}"
-      with_items: "{{ ['volume_bob_1', 'volume_bob_2', 'volume_bob_3'] }}"
 
     - name: Create volume set "{{ volumeset_name }}"
       hpe3par_volumeset:
