@@ -230,14 +230,23 @@ When we open the file, we will see multiple sections. Again we are assuming that
 
 There are several sections where you can specify variables allowing maximum flexibility when creating playbooks. They can be specified at the playbook level (Global), in external file (properties/storage_system_properties.yml), or at the task level.
 
-In the **vars** section, you can modify/specify the CPG/Host names to be added to the **bob_domain**.
+In the **vars** section, you can modify the CPG/Host names to be added to the **bob_domain**.
+
+**Note:** In order to assign the new CPGs and Hosts to the domain, you must specify a domain in the `domain: 'new_domain'` variable. This variable will then be used within each of the tasks (**domain:**, **host_domain:**), where required to assign the CPG or Host to the domain. If the domain is **not** specified, the CPG or Host will **not** be assigned a domain and will not be accessible to the Domain user when they log into the array.
 
 > Modify the **host_name** and **iscsi_names** to match a host and iSCSI iqns you want to add from your environment.
 
 In the **tasks** section, for example in the **Create CPG** task, you can add/modify the variables (growth_limit, raid_type, etc) in the tasks as well move them into **vars** section if needed.
+
+> In the case of Multi-Tenancy, creating growth limits, defining disk characteristics on CPGs in critical in order to enforce boundaries per tenant (so one tenant doesn't consume the entire storage array), as well as to ensure all tenants get the appropriate resources and performance per their needs.
 
 Also you can specify an external variables file like the **storage_system_properties.yml**. This gave us the ability to encrypt the external file without affecting the main playbook.
 
 #### Tasks sections
 
 We have 4 main tasks in this example.
+
+1. Load Storage System Vars (load the encrypted storage system IP, username/password)
+2. Create CPG
+3. Create Host
+4. Add iSCSI paths to Host
