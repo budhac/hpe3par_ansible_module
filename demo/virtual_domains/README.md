@@ -61,6 +61,8 @@ The following section will demonstrate the process to configure resources like C
 
 Also everything else from this point will be able to be done via the HPE 3PAR Ansible Storage Module on a Linux (RHEL, CentOS, Ubuntu) system with Ansible (ver. 2.5 or later) installed.
 
+### Storage Admin Perspective
+
 #### Let's get started.
 
 Clone the repo to get access to the virtual domain demo.
@@ -284,4 +286,19 @@ localhost                  : ok=5    changed=0    unreachable=0    failed=0
 ```
 
 #### Success.
-Now our Domain and Users have been configured, CPGs and Hosts have been created for the users to consume.
+
+This sample playbook demonstrates how a Storage Admin can quickly and programmatically configure Domains, Users, and storage resources using a combination of the SSMC and Ansible playbooks.
+
+Now that our Domain and Users have been configured along with CPGs and Hosts for the users to consume, lets look at the Storage Users will use this.
+
+---
+
+### Storage User Perspective
+
+Now that we have finished configuring the Domains and Users, and created CPGs and added hosts into the Domain for our users, lets cover how a user will now consume the 3PAR and be able to do it using only Ansible playbooks.
+
+#### Assumptions
+  * Domains/users have been created
+  * CPGs and Hosts have been assigned to the domain
+
+#### Let's get started
