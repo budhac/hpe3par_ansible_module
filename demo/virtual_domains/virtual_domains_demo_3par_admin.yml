@@ -2,8 +2,6 @@
 - name: Virtual Domains on 3PAR Ansible Demo playbook - Admin
   hosts: localhost
   become: no
-  environment:
-    no_proxy: localhost, 10.10.1.150, 10.10.1.151
 
   vars:
     cpg_name: 'bob_cpg_FC_r6'
