@@ -92,7 +92,9 @@ library        = /root/workspace/hpe3par_ansible_module/Modules
 
 #### Understanding the 3PAR Ansible playbooks
 
-1. Navigate to the **hpe3par_ansible/demo/virtual_domains** folder. Here we will find two Ansible playbooks and the **properties** folder.
+1. Navigate to the **hpe3par_ansible/demo/virtual_domains** folder. Here we will find two Ansible playbooks and the **properties/** folder.  
+&nbsp;  
+
     * **virtual_domains_demo_3par_admin.yml**
     * **virtual_domains_demo_3par_user.yml**
     * **properties/storage_system_properties.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
