@@ -93,6 +93,11 @@ library        = /root/workspace/hpe3par_ansible_module/Modules
 #### Understanding the 3PAR Ansible playbooks
 
 1. Navigate to the **hpe3par_ansible/demo/virtual_domains** folder. Here we will find two Ansible playbooks and the **properties/** folder.  
+&nbsp;  
+    * **virtual_domains_demo_3par_admin.yml**
+    * **virtual_domains_demo_3par_user.yml**
+    * **properties/storage_system_properties.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
+    * **properties/storage_system_properties_bob.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
 
 ```
 cd ~/workspace/hpe3par_ansible/demo/virtual_domains
@@ -107,11 +112,6 @@ drwxr-xr-x. 2 root root  116 Sep 26 09:23 properties
 -rw-r--r--. 1 root root 2065 Sep 26 09:23 virtual_domains_demo_3par_admin.yml
 -rw-r--r--. 1 root root 1847 Sep 26 09:23 virtual_domains_demo_3par_user.yml
 ```
-
-    * **virtual_domains_demo_3par_admin.yml**
-    * **virtual_domains_demo_3par_user.yml**
-    * **properties/storage_system_properties.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
-    * **properties/storage_system_properties_bob.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
 
 2. Edit the **properties/storage_system_properties.yml** and configure the 3PAR IP address. Enter the **Storage Admin** username and password. Save the file.
 
