@@ -57,7 +57,7 @@ The first steps to setting up your 3PAR for multi-tenancy is to create a new vir
 
 ## Using Ansible to configure CPGs, Hosts, Volumes and more.
 
-The following section will demonstrate the process to configure resources like CPGs, 3PAR hosts, etc and assign them to the newly created domains. Remember that the domain users will only be able to edit resources they have access to and are unable to see resources from other domains unless authorized to do so.
+The following section will demonstrate the process to configure resources like CPGs, 3PAR hosts, etc and assign them to the newly created domains. Remember that the domain users will only be able to edit resources they have access to and will be unable to see resources from other domains unless authorized to do so.
 
 Also everything else from this point will be able to be done via the HPE 3PAR Ansible Storage Module on a Linux (RHEL, CentOS, Ubuntu) system with Ansible (ver. 2.5 or later) installed.
 
@@ -93,12 +93,8 @@ library        = /root/workspace/hpe3par_ansible_module/Modules
 #### Understanding the 3PAR Ansible playbooks
 
 1. Navigate to the **hpe3par_ansible/demo/virtual_domains** folder. Here we will find two Ansible playbooks and the **properties** folder.
-&nbsp;  
-
   * **virtual_domains_demo_3par_admin.yml**
   * **virtual_domains_demo_3par_user.yml**
-&nbsp;  
-
   * **properties/storage_system_properties.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
   * **properties/storage_system_properties_bob.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
 
