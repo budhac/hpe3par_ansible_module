@@ -23,11 +23,11 @@ The first step to setting up your 3PAR for multi-tenancy is to create a new virt
 
 ![Domains](/demo/virtual_domains/img/3par_domains.jpg)
 
-3. Click Create domain
+3. Click **Create domain**
 
 ![Create Domain](/demo/virtual_domains/img/3par_domains_create.jpg)
 
-4. Enter the name of the domain. In this example, **bob_domain**. Then click **Add systems**, specify the 3PAR where the domain will be created. Once complete, click **Create**.
+4. Enter the name of the domain. In this example, **bob_domain**. Then click **Add systems**. Specify the **3PAR** where the domain will be created. Once complete, click **Create**.
 
 ![Create Domain](/demo/virtual_domains/img/3par_domains_create_bob.jpg)
 
