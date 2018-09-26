@@ -152,7 +152,7 @@ ansible-vault encrypt properties/storage_system_properties_bob.yml
 5. Check to verify they are encrypted. You should see something similar to below.
 
 ```
-# head -2 properties/storage_system_properties.yml
+$ head -2 properties/storage_system_properties.yml
 $ANSIBLE_VAULT;1.1;AES256
 33636137356335
 ```
@@ -232,7 +232,7 @@ There are several sections where you can specify variables allowing maximum flex
 
 In the **vars** section, you can modify the CPG/Host names to be added to the **bob_domain**.
 
-**Note:** In order to assign the new CPGs and Hosts to the domain, you must specify a domain in the `domain: 'new_domain'` variable. This variable will then be used within each of the tasks (**domain:**, **host_domain:**), where required to assign the CPG or Host to the domain. If the domain is **not** specified, the CPG or Host will **not** be assigned a domain and will not be accessible to the Domain user when they log into the array.
+**Note:** In order to assign the new CPGs and Hosts to the domain, you must specify a domain in the `domain: 'new_domain'` variable. This variable will then be used within each of the tasks (**domain:**, **host_domain:**), where required to assign the CPG or Host to the domain. If the domain is **not** specified, the CPG or Host will **not** be assigned to a domain and will not be accessible to the Domain user when they log into the array.
 
 > Modify the **host_name** and **iscsi_names** to match a host and iSCSI iqns you want to add from your environment.
 
@@ -246,7 +246,46 @@ Also you can specify an external variables file like the **storage_system_proper
 
 We have 4 main tasks in this example.
 
+These tasks are taken from the main associated (CPG, Host, Volume, etc) playbooks found in the [https://github.com/HewlettPackard/hpe3par_ansible_module/tree/master/playbooks](https://github.com/HewlettPackard/hpe3par_ansible_module/tree/master/playbooks).
+
+Please refer to the [Modules README](https://github.com/HewlettPackard/hpe3par_ansible_module/blob/master/Modules/readme.md) for detailed information on each Module including optional parameters.
+
 1. Load Storage System Vars (load the encrypted storage system IP, username/password)
-2. Create CPG
-3. Create Host
-4. Add iSCSI paths to Host
+2. Create CPG (create CPGs per the provided specifications)
+3. Create Host (create a basic 3PAR host)
+4. Add iSCSI paths to Host (modify the host and add iSCSI IQNs or FC WWNs)
+
+#### Running the Playbook
+
+Now that we know what is going on within the admin playbook, we can run it so that it creates the CPGs, Host resources within the **bob_domain**.
+
+We will run this playbook with the `ansible-playbook --ask-vault-pass` option in order to decrypt the **storage_system_properties.yml** file.
+
+```yaml
+$ ansible-playbook --ask-vault-pass virtual_domains_demo_3par_admin.yml
+Vault password:
+
+PLAY [Virtual Domains on 3PAR Ansible Demo playbook - Admin] **************************
+
+TASK [Gathering Facts] ****************************************************************
+ok: [localhost]
+
+TASK [Load Storage System Vars] *******************************************************
+ok: [localhost]
+
+TASK [Create CPG "bob_cpg_FC_r6"] *****************************************************
+ok: [localhost]
+
+TASK [Create Host "scom.virtware.co"] *************************************************
+ok: [localhost]
+
+TASK [Add iSCSI paths to Host "scom.virtware.co"] ***************************************************************************************
+ok: [localhost]
+
+PLAY RECAP ****************************************************************************
+localhost                  : ok=5    changed=0    unreachable=0    failed=0
+
+```
+
+#### Success.
+Now our Domain and Users have been configured, CPGs and Hosts have been created for the users to consume.
