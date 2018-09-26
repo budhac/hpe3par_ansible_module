@@ -2,14 +2,25 @@
 
 This guide will walk through the steps to manage Virtual Domains within a 3PAR using a mixture of the SSMC and the Ansible module for 3PAR. This guide targets those who want to setup and manage multi-tenancy on a 3PAR.
 
-## Assumptions
+* [Assumptions](#assumptions)
+* [Configuring Virtual Domains in SSMC](#virtualdomain)
+* [Using Ansible to configure CPGs, Hosts, Volumes and more.](#ansible)
+  * [Storage Admin Perspective](#admin)
+  * [Generic Ansible housekeeping](#housekeeping)
+* [Deploying the HPE 3PAR Volume Plug-in in Kubernetes/OpenShift](#deploying)
+  * [Configuring etcd](#etcd)
+  * [Installing the HPE 3PAR Volume Plug-in](#installing)
+* [Usage](#usage)
+---
+
+## Assumptions<a name="assumptions"></a>
 * HPE 3PAR configured and zoned correctly
 * WSAPI enabled
 * Super user access to 3PAR
 * Ansible installed on workstation
 * Knowledge of Ansible and playbooks
 
-## Configuring Virtual Domains
+## Configuring Virtual Domains in SSMC<a name="virtualdomain"></a>
 
 Domains allow an administrator to create up to 1,024 domains, or spaces, within a system, where each domain is dedicated to a specific application. A subset of the system users has assigned rights over the domains. Domains can be useful in scenarios where a single system is used to manage data from several different independent applications.
 For more information, refer to the **HPE 3PAR Storeserv Storage Concepts Guide**.
@@ -55,13 +66,13 @@ The first steps to setting up your 3PAR for multi-tenancy is to create a new vir
 &nbsp;  
 
 
-## Using Ansible to configure CPGs, Hosts, Volumes and more.
+## Using Ansible to configure CPGs, Hosts, Volumes and more.<a name="ansible"></a>
 
 The following section will demonstrate the process to configure resources like CPGs, 3PAR hosts, etc and assign them to the newly created domains. Remember that the domain users will only be able to edit resources they have access to and will be unable to see resources from other domains unless authorized to do so.
 
 Also everything else from this point will be able to be done via the HPE 3PAR Ansible Storage Module on a Linux (RHEL, CentOS, Ubuntu) system with Ansible (ver. 2.5 or later) installed.
 
-### Storage Admin Perspective
+### Storage Admin Perspective<a name="admin"></a>
 
 #### Let's get started.
 
@@ -71,7 +82,7 @@ Clone the repo to get access to the virtual domain demo.
 https://github.com/budhac/hpe3par_ansible_module
 ```
 
-#### Generic Ansible housekeeping
+#### Generic Ansible housekeeping<a name="housekeeping"></a>
 
 1. Configure **ansible.cfg** to know about the 3PAR Ansible Storage Modules.
 
@@ -157,8 +168,9 @@ $ANSIBLE_VAULT;1.1;AES256
 
 >**Note:** If you need to edit the encrypted file, you can run `ansible-vault edit file.yml`, enter the vault password and perform the edits. Alternatively, if you need to decrypt the file, run `ansible-vault decrypt file.yml` and enter the vault password.
 
+---
 
-Now let's get on to the fun stuff.
+**Now let's get on to the fun stuff.**
 
 We will be working in the **virtual_domains_demo_3par_admin.yml** playbook. This playbook is ran by the Storage Admin to create **CPGs** and assign **Hosts** to the domain we created previously.
 
@@ -223,7 +235,7 @@ When we open the file, we will see multiple sections. Again we are assuming that
         host_iscsi_names: "{{ iscsi_names }}"
 
 ```  
-
+---
 #### Variables section
 
 There are several sections where you can specify variables allowing maximum flexibility when creating playbooks. They can be specified at the playbook level (Global), in external file (properties/storage_system_properties.yml), or at the task level.
@@ -240,6 +252,8 @@ In the **tasks** section, for example in the **Create CPG** task, you can add/mo
 
 Also you can specify an external variables file like the **storage_system_properties.yml**. This gave us the ability to encrypt the external file without affecting the main playbook.
 
+---
+
 #### Tasks sections
 
 We have 4 main tasks in this example.
@@ -253,8 +267,9 @@ Please refer to the [Modules README](https://github.com/HewlettPackard/hpe3par_a
 3. Create Host (create a basic 3PAR host)
 4. Add iSCSI paths to Host (modify the host and add iSCSI IQNs or FC WWNs)
 
-#### Running the Playbook
+---
 
+#### Running the Playbook
 Now that we know what is going on within the admin playbook, we can run it so that it creates the CPGs, Host resources within the **bob_domain**.
 
 We will run this playbook with the `ansible-playbook --ask-vault-pass` option in order to decrypt the **storage_system_properties.yml** file.
@@ -295,7 +310,9 @@ Now that our Domain and Users have been configured along with CPGs and Hosts for
 
 ### Storage User Perspective
 
-Now that we have finished configuring the Domains and Users, and created CPGs and added hosts into the Domain for our users, lets cover how a user will now consume the 3PAR and be able to do it using only Ansible playbooks.
+Now that we have finished configuring the Domain, Users, and created CPGs and added hosts into the Domain for our users, lets cover how a user will now consume the 3PAR and be able to do it using only Ansible playbooks.
+
+This section will follow closely to my other blog post about using the Ansible modules to provision storage on an HPE 3PAR. [Storage Provisioning using Ansible with HPE 3PAR Storage](https://developer.hpe.com/blog/storage-provisioning-using-ansible-with-hpe-3par-storage)
 
 #### Assumptions
   * Domains/users have been created
