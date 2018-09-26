@@ -41,7 +41,7 @@ The first step to setting up your 3PAR for multi-tenancy is to create a new virt
 
 7. Specify the **NEW** user name and password.
 
-![Create bob_user](/demo/virtual_domains/img/create_user_bob.jpg)
+![Create bob_user](/demo/virtual_domains/img/create_user_bob_65.jpg)
 
 8. Click **Add Authorizations**, choose the domain created previously (**bob_domain** on **virt-3par** system). Choose the **edit** Role for the user. Click Add.
 
