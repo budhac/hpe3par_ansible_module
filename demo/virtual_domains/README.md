@@ -3,8 +3,8 @@
 This guide will walk through the steps to manage Virtual Domains within a 3PAR using a mixture of the SSMC and the Ansible module for 3PAR. This guide targets those who want to setup and manage multi-tenancy on a 3PAR.
 
 * [Assumptions](#assumptions)
-* [Why Bob?](#bob)
 * [Configuring Virtual Domains in SSMC](#virtualdomain)
+* [Why Bob?](#bob)
 * [Using Ansible to configure CPGs, Hosts, Volumes and more.](#ansible)
   * [Storage Admin Perspective](#admin)
     * [Generic Ansible housekeeping](#housekeeping)
@@ -80,7 +80,7 @@ The first steps to setting up your 3PAR for multi-tenancy is to create a new vir
 &nbsp;  
 
 
-## Using Ansible to configure CPGs, Hosts, Volumes and more.<a name="ansible"></a>
+<a name="ansible"></a>## Using Ansible to configure CPGs, Hosts, Volumes and more.
 
 The following section will demonstrate the process to configure resources like CPGs, 3PAR hosts, etc and assign them to the newly created domains. Remember that the domain users will only be able to edit resources they have access to and will be unable to see resources from other domains unless authorized to do so.
 
