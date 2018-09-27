@@ -1,4 +1,4 @@
-# Using the HPE 3PAR Ansible Module to manage Virtual Domains
+# Using the SSMC & HPE 3PAR Ansible Module with Virtual Domains in a Multi-tenant scenario
 
 This guide will walk through the steps to manage Virtual Domains within a 3PAR using a mixture of the SSMC and the Ansible module for 3PAR. This guide targets those who want to setup and manage multi-tenancy on a 3PAR.
 
