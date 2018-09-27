@@ -13,10 +13,15 @@ This guide will walk through the steps to manage Virtual Domains within a 3PAR u
       * [Ansible Vault - encrypt/decrypt](#vault)
     * [Fun Stuff](#admin_funstuff)
       * [Variables](#admin_vars)
+      * [Defining CPG Limits](#limits)
       * [Tasks](#admin_tasks)
       * [Running the Playbook](#admin_run)
   * [Storage User Perspective](#user)
     * [Assumptions](#user_assumptions)
+    * [Variables section - User](#user_vars)
+    * [Tasks sections - User](#user_tasks)
+    * [Running the Playbook - User](#user_run)
+    * [Success](#user_success)
 
 ---
 
@@ -492,7 +497,7 @@ localhost                  : ok=6    changed=0    unreachable=0    failed=0
 
 ```
 
-#### Success.
+#### Success.<a name="user_success"></a>
 
 This sample playbook demonstrates how a Storage User can quickly and programmatically provision storage and manage those storage resources within their Domain while still being under the control of the Storage Admin.
 
@@ -507,7 +512,7 @@ Now let's verify that these volumes have been exported to the Host.
 
 Now let's check **scom.virtware.co**
 
->You may need to perform a **Rescan Disks** to pick up the new volumes.
+>You may need to perform a **Rescan Disks** to see the new volumes.
 
 ![Success SCOM](/demo/virtual_domains/img/scom_success.jpg)
 
