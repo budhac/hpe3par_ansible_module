@@ -115,6 +115,8 @@ inventory      = /etc/ansible/hosts
 library        = /root/workspace/hpe3par_ansible_module/Modules
 ```
 
+---
+
 #### Understanding the 3PAR Ansible playbooks<a name="understanding"></a>
 
 Navigate to the `hpe3par_ansible/demo/virtual_domains` folder. Here we will find two Ansible playbooks and the `properties/` folder.
@@ -137,6 +139,8 @@ drwxr-xr-x. 2 root root  116 Sep 26 09:23 properties
 -rw-r--r--. 1 root root 2065 Sep 26 09:23 virtual_domains_demo_3par_admin.yml
 -rw-r--r--. 1 root root 1847 Sep 26 09:23 virtual_domains_demo_3par_user.yml
 ```
+
+---
 
 **Storage System Property files**<a name="property"></a>
 
@@ -340,6 +344,8 @@ This section will follow closely to my other blog post about using the Ansible m
   * Reviewed [Generic Ansible housekeeping](#housekeeping) section
   * Vault password to unlock the **properties/storage_system_properties_bob.yml** file. Check out the [Vault section](#vault) for more info.
 
+---
+
 #### Let's get started
 
 Let's take a look at our Ansible playbooks again. Since we have everything ready for us on the array, it is very simple to run the playbooks as a user. The example playbook is a simple demonstration on how you can turn your **Infrastructure into Code**.
@@ -429,11 +435,12 @@ When we open the file, we will see multiple sections. Again we are assuming that
         autolun: "{{ autolun }}"
 ```        
 
----
 
 The sections within the user playbook are very similar to the one used by the admin user. From this playbook, you will be provisioning volumes from the CPGs and resources specified by the Storage Admin ([100GB limit](#limits)) and exporting the volumes to hosts. The main difference here is that you are authenticating to the 3PAR with a 3PAR Domain user (**bob_user**) rather than a 3PAR Super user.
 
 The 3PAR Domain user is specified in the `properties/storage_system_properties_bob.yml` file. This is covered in the [Storage System Property Files](#property) section.
+
+---
 
 #### Variables section - User<a name="user_vars"></a>
 
@@ -446,6 +453,8 @@ In the `vars` section, you can modify the **Volume**, **CPG**, **3PAR Host**, **
 **Note:** Since we are logged into the `bob_domain` as the `bob_user`, we don't have to explicitly define the domain when creating Volumes, Volume Sets, etc. because the domain will be inherited from the User's domain.
 
 In the `tasks` section, for example in the **Create Volume** task, you can use the `with_items` option (with_items functions as a loop in Ansible) to create multiple volumes during runtime rather creating multiple tasks to create individual volumes.
+
+---
 
 #### Tasks sections - User<a name="user_tasks"></a>
 
@@ -460,6 +469,8 @@ Please refer to the [Modules README](https://github.com/HewlettPackard/hpe3par_a
 2. **Create Volume** (create 3 Volumes as defined)
 3. **Create VolumeSet** (create a VolumeSet for the 3 Volumes)
 4. **Create VLUN** (Export the VolumeSet to the 3PAR Host (i.e. scom.virtware.co))
+
+---
 
 #### Running the Playbook - User<a name="user_run"></a>
 Now that we have configured our playbook, we can run it in order to create the **Volumes**, **VolumeSet** all within the `bob_domain`.
@@ -496,6 +507,8 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=6    changed=0    unreachable=0    failed=0
 
 ```
+
+---
 
 #### Success.<a name="user_success"></a>
 
