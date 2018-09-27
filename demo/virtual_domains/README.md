@@ -39,6 +39,8 @@ For more information, refer to the **HPE 3PAR Storeserv Storage Concepts Guide**
 
 The first steps to setting up your 3PAR for multi-tenancy is to create a new virtual domain. Currently the configuration of Domains/Users can only done within the SSMC or via the 3PAR CLI. The example shown below will be done within the SSMC.
 
+
+<a name="bob"></a>
 >You may ask why I am using Bob, because everyone knows Bob is cool!<a name="bob"></a>
 
 1. Login into the SSMC with Super user access.  
