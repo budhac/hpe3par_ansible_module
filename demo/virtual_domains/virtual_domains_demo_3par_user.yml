@@ -1,8 +1,6 @@
 ---
 - name: Virtual Domains on 3PAR Ansible Demo playbook - Bob User
   hosts: localhost
-  environment:
-    no_proxy: localhost, 10.10.1.150, 10.10.1.151
 
   vars:
     volume_name: 'bob_demo_volume'
