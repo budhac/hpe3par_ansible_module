@@ -75,6 +75,38 @@ The first steps to setting up your 3PAR for multi-tenancy is to create a new vir
 
 #### Repeat these steps as necessary to configure additional Domains and Users within your 3PAR.
 
+If you did want to use Ansible to configure the domains and users, you can have Ansible pass CLI commands to the 3PAR using the `shell` module.
+
+For example:
+
+```YAML
+---
+- name: Create 3PAR Domain & Users
+  hosts: localhost
+  tasks:
+    - name: install sshpass
+      package:
+        name: sshpass
+        state: present
+      become: yes
+
+    - name: Create Domain
+      shell: /usr/bin/sshpass -p 3pardata ssh -oStrictHostKeyChecking=no 3paradm@192.168.1.50 "createdomain bob_domain"
+      register: domain
+
+    - name: print domain
+      debug:
+        msg: "{{ domain }}"
+
+    - name: Create Users
+      shell: /usr/bin/sshpass -p 3pardata ssh -oStrictHostKeyChecking=no 3paradm@192.168.1.50 "createuser -c Password1 bob_user bob_domain edit"
+      register: users    
+
+      - name: print users
+        debug:
+          msg: "{{ users }}"
+```
+
 &nbsp;  
 
 ## Using Ansible to configure CPGs, Hosts, Volumes and more.<a name="ansible"></a>
