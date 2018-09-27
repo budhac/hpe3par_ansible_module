@@ -125,6 +125,13 @@ Clone the repo to get access to the Virtual Domain demo.
 https://github.com/budhac/hpe3par_ansible_module
 ```
 
+Install the HPE 3PAR Python SDK
+
+```
+pip install hpe3par_sdk
+```
+
+
 #### Generic Ansible housekeeping<a name="housekeeping"></a>
 
 1. Configure `ansible.cfg` to know about the 3PAR Ansible Storage Modules.
