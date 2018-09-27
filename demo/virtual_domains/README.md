@@ -491,3 +491,27 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=6    changed=0    unreachable=0    failed=0
 
 ```
+
+#### Success.
+
+This sample playbook demonstrates how a Storage User can quickly and programmatically provision storage and manage those storage resources within their Domain while still being under the control of the Storage Admin.
+
+Now let's verify that these volumes have been exported to the Host.
+
+1. Log into the **SSMC** as `bob_user`
+
+2. Click on **Virtual Volumes**. You should see 3 volumes and also see that they are successfully exported to **scom.virtware.co**
+
+![Success SSMC](/demo/virtual_domains/img/ssmc_success_60.jpg)
+
+
+Now let's check **scom.virtware.co**
+
+>You may need to perform a **Rescan Disks** to pick up the new volumes.
+
+![Success SCOM](/demo/virtual_domains/img/scom_success_60.jpg)
+
+You should be able to see all of the volumes available to the Windows Server.
+
+
+This concludes this demo. With this information, you will be able to create Multiple Domains, Users, and manage the resources that are available to each. You also will understand how to apply the appropriate controls around CPGs and your domains in order to facilitate multi-tenancy storage domain.
