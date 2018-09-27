@@ -77,12 +77,10 @@ The first steps to setting up your 3PAR for multi-tenancy is to create a new vir
 
 &nbsp;  
 
-&nbsp;  
-
-
+sw
 ## Using Ansible to configure CPGs, Hosts, Volumes and more.<a name="ansible"></a>
 
-The following section will demonstrate the process to configure resources like CPGs, 3PAR hosts, etc and assign them to the newly created domains. Remember that the domain users will only be able to edit resources they have access to and will be unable to see resources from other domains unless authorized to do so.
+The following section will demonstrate the process to configure resources like CPGs, 3PAR hosts, etc. and assign them to the newly created domain(s). Remember that the domain users will only be able to view/edit resources they have access to and will be unable to view/edit resources from other domains unless authorized to do so.
 
 Also everything else from this point will be able to be done via the HPE 3PAR Ansible Storage Module on a Linux (RHEL, CentOS, Ubuntu) system with Ansible (ver. 2.5 or later) installed.
 
@@ -90,7 +88,7 @@ Also everything else from this point will be able to be done via the HPE 3PAR An
 
 #### Let's get started.
 
-Clone the repo to get access to the virtual domain demo.
+Clone the repo to get access to the Virtual Domain demo.
 
 ```
 https://github.com/budhac/hpe3par_ansible_module
@@ -332,7 +330,7 @@ Now that our Domain and Users have been configured along with CPGs and Hosts for
 
 ### Storage User Perspective<a name="user"></a>
 
-Now that we have finished configuring the Domain, Users, and created CPGs and added hosts into the Domain for our users, lets cover how a user will now consume the 3PAR and be able to do it using only Ansible playbooks.
+Now that we have finished configuring a Domain, Users, created CPGs and added hosts into the Domain, lets cover how a user will now consume the 3PAR and be able to do it using only Ansible playbooks while still being bound to the limits placed on the domain by the Storage Admin.
 
 This section will follow closely to my other blog post about using the Ansible modules to provision storage on an HPE 3PAR. [Storage Provisioning using Ansible with HPE 3PAR Storage](https://developer.hpe.com/blog/storage-provisioning-using-ansible-with-hpe-3par-storage)
 
@@ -442,6 +440,8 @@ The 3PAR Domain user is specified in the `properties/storage_system_properties_b
 A quick review on variables. There are several sections where you can specify variables allowing maximum flexibility when creating playbooks. They can be specified at the playbook level (Global), in external file (properties/storage_system_properties.yml), or at the task level.
 
 In the **vars** section, you can modify the **Volume**, **CPG**, **3PAR Host**, **Volume Size**, etc. to meet your needs.
+
+>Be aware, if you exceed the 100GB limit on the CPG (as defined by the Storage Admin in our demo), by either creating a volume larger than 100GB or multiple volumes that exceed a cumulative 100GB in size, the playbook will fail with an error that the allocation is larger than the limit.
 
 **Note:** Since we are logged into the `bob_domain` as the `bob_user`, we don't have to explicitly define the domain when creating Volumes, Volume Sets, etc. because the domain will be inherited from the User's domain.
 
