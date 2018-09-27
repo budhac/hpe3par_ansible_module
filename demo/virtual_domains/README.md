@@ -117,13 +117,14 @@ library        = /root/workspace/hpe3par_ansible_module/Modules
 
 #### Understanding the 3PAR Ansible playbooks<a name="understanding"></a>
 
-Navigate to the `hpe3par_ansible/demo/virtual_domains` folder. Here we will find two Ansible playbooks and the `properties/` folder.  
+Navigate to the `hpe3par_ansible/demo/virtual_domains` folder. Here we will find two Ansible playbooks and the `properties/` folder.
+
 &nbsp;  
 
-    * **virtual_domains_demo_3par_admin.yml**
-    * **virtual_domains_demo_3par_user.yml**
-    * **properties/storage_system_properties.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
-    * **properties/storage_system_properties_bob.yml** (This is configuration files containing the 3PAR IP address, Domain user username and password for the 3PAR array)
+* **virtual_domains_demo_3par_admin.yml**
+* **virtual_domains_demo_3par_user.yml**
+* **properties/storage_system_properties.yml** (This is configuration files containing the 3PAR IP address, Storage admin username and password for the 3PAR array)
+* **properties/storage_system_properties_bob.yml** (This is configuration files containing the 3PAR IP address, Domain user username and password for the 3PAR array)
 
 ```
 cd ~/workspace/hpe3par_ansible/demo/virtual_domains
@@ -283,10 +284,10 @@ These tasks are taken from the main associated (CPG, Host, Volume, etc) playbook
 
 Please refer to the [Modules README](https://github.com/HewlettPackard/hpe3par_ansible_module/blob/master/Modules/readme.md) for detailed information on each Module including optional parameters.
 
-1. Load Storage System Vars (load the encrypted storage system IP, username/password)
-2. Create CPG (create CPGs per the provided specifications)
-3. Create Host (create a basic 3PAR host)
-4. Add iSCSI paths to Host (modify the host and add iSCSI IQNs or FC WWNs)
+1. **Load Storage System Vars** (load the encrypted storage system IP, username/password)
+2. **Create CPG** (create CPGs per the provided specifications)
+3. **Create Host** (create a basic 3PAR host)
+4. **Add iSCSI paths to Host** (modify the host and add iSCSI IQNs or FC WWNs)
 
 ---
 
