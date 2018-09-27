@@ -77,7 +77,6 @@ The first steps to setting up your 3PAR for multi-tenancy is to create a new vir
 
 &nbsp;  
 
-sw
 ## Using Ansible to configure CPGs, Hosts, Volumes and more.<a name="ansible"></a>
 
 The following section will demonstrate the process to configure resources like **CPGs**, **3PAR hosts**, etc. and assign them to the newly created domain(s). Remember that the domain users will only be able to view/edit resources they have access to and will be unable to view/edit resources from other domains unless authorized to do so.
