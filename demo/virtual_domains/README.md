@@ -219,7 +219,7 @@ When we open the file, we will see multiple sections. Again we are assuming that
 
     - name: Create CPG "{{ cpg_name }}"
       hpe3par_cpg:
-        # 3PAR CPG options found here: https://github.com/HewlettPackard/hpe3par_ansible_module/blob/master/Modules/hpe3par_cpg.py
+        # 3PAR CPG options found here: https://github.com/HewlettPackard/hpe3par_ansible_module#modules
         storage_system_ip: "{{ storage_system_ip }}"
         storage_system_username: "{{ storage_system_username }}"
         storage_system_password: "{{ storage_system_password }}"
@@ -239,7 +239,7 @@ When we open the file, we will see multiple sections. Again we are assuming that
 
     - name: Create Host "{{ host_name }}"
       hpe3par_host:
-        # 3PAR Host options found here: https://github.com/HewlettPackard/hpe3par_ansible_module/blob/master/Modules/hpe3par_host.py
+        # 3PAR Host options found here: https://github.com/HewlettPackard/hpe3par_ansible_module#modules
         storage_system_ip: "{{ storage_system_ip }}"
         storage_system_username: "{{ storage_system_username }}"
         storage_system_password: "{{ storage_system_password }}"
