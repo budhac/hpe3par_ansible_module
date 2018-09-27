@@ -268,7 +268,7 @@ In the **vars** section, you can modify the CPG/Host names to be added to the **
 
 In the **tasks** section, for example in the **Create CPG** task, you can add/modify the variables (growth_limit, raid_type, etc) in the tasks as well move them into **vars** section if needed.<a name="limits"></a>
 
-> In the case of Multi-Tenancy, creating growth limits, defining disk characteristics on CPGs in critical in order to enforce boundaries per tenant (so one tenant doesn't consume the entire storage array), as well as to ensure all tenants get the appropriate resources and performance per their needs. In the playbook above, we specified a **100GB growth limit (with a 90GB warning)** on the CPG, therefore restricting the users within the `bob_domain` from using more than 100GB of storage space on the array. All of this is configurable by the Storage Admin.
+> In the case of Multi-Tenancy, creating growth limits, defining disk characteristics on CPGs in critical in order to enforce boundaries per tenant (this prevents one tenant from consuming the entire storage array), as well as to ensure all tenants get the appropriate resources and performance per their needs. In the playbook above, we specified a **100GB growth limit (with a 90GB warning)** on the CPG, therefore restricting the users within the `bob_domain` from using more than 100GB of storage space on the array. All of this is configurable by the Storage Admin.
 
 Also you can specify an external variables file like the **storage_system_properties.yml**. This gave us the ability to encrypt the external file without affecting the main playbook.
 
