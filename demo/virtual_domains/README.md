@@ -37,7 +37,7 @@ This guide will walk through the steps to manage Virtual Domains within a 3PAR u
 Domains allow an administrator to create up to 1,024 domains, or spaces, within a system, where each domain is dedicated to a specific application. A subset of the system users has assigned rights over the domains. Domains can be useful in scenarios where a single system is used to manage data from several different independent applications.
 For more information, refer to the **HPE 3PAR Storeserv Storage Concepts Guide**.
 
-The first steps to setting up your 3PAR for multi-tenancy is to create a new virtual domain. Currently the configuration of Domains/Users can only done within the SSMC or via the 3PAR CLI. The example shown below will be done within the SSMC.
+The first steps to setting up your 3PAR for multi-tenancy is to create a new virtual domain. Currently the configuration of Domains/Users can only done within the SSMC or via the 3PAR CLI (using **createdomain <domain>**, **createuser <username> <domainname> <role>** ). The example shown below will be done within the SSMC.
 
 1. Login into the SSMC with Super user access.  
 
