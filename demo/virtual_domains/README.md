@@ -502,14 +502,14 @@ Now let's verify that these volumes have been exported to the Host.
 
 2. Click on **Virtual Volumes**. You should see 3 volumes and also see that they are successfully exported to **scom.virtware.co**
 
-![Success SSMC](/demo/virtual_domains/img/ssmc_success_60.jpg)
+![Success SSMC](/demo/virtual_domains/img/ssmc_success.jpg)
 
 
 Now let's check **scom.virtware.co**
 
 >You may need to perform a **Rescan Disks** to pick up the new volumes.
 
-![Success SCOM](/demo/virtual_domains/img/scom_success_60.jpg)
+![Success SCOM](/demo/virtual_domains/img/scom_success.jpg)
 
 You should be able to see all of the volumes available to the Windows Server.
 
